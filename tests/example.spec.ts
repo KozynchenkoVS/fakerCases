@@ -1,6 +1,7 @@
 import { test } from '@playwright/test';
-import {faker } from '@faker-js/faker'
-const arr: ReadonlyArray<string> = Array.apply(null, new Array(3)).map(()=> faker.string.uuid())
+const arr: ReadonlyArray<string> = Array(10)
+  .fill(undefined)
+  .map(() => Math.floor(Math.random() * Date.now()).toString(36));
 for (const testCase of arr)
 test(`has title ${testCase}`, async ({ page }) => {
   await page.goto('https://playwright.dev/');
